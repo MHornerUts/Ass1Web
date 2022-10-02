@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="projectstyles.css">
+</head>
+<body>
+    <div class="row">
+
+        <div class="column left">
+            <img src="Images/Categories.PNG" usemap="#catmap">
+            <img id="frozen" src="Images/Frozenfood.PNG" usemap="#frozenmap" hidden>
+            <img id="fresh" src="Images/Freshfood.PNG" usemap="#freshmap" hidden>
+            <img id="bev" src="Images/Beverages.PNG" usemap="#bevmap" hidden>
+            <img id="pet" src="Images/Petfood.PNG" usemap="#petmap" hidden>
+            <img id="home" src="Images/Homehealth.PNG" usemap="#homemap" hidden>
+        </div>
+        
+        <div class="column right">
+            <span id="productdetails"></span>
+        </div>
+        
+    </div>
+
+    <map name="catmap">
+        <area shape="rect" id="frozenmapselect"  coords="100,203,8,158">
+        <area shape="rect" id="freshmapselect"  coords="118,158,205,203">
+        <area shape="rect" id="bevmapselect"  coords="221,158,315,203">
+        <area shape="rect" id="homemapselect"  coords="331,158,422,202">
+        <area shape="rect" id="petmapselect"   coords="437,158,528,203">
+
+    </map>
+
+    <map name="frozenmap">
+        <area shape="rect" coords="9,150,103,197" onclick="getProduct('1002')">
+        <area shape="rect" coords="72,281,162,327" onclick="getProduct('1000')">
+        <area shape="rect" coords="177,281,268,328" onclick="getProduct('1001')">
+        <area shape="rect" coords="223,151,314,196" onclick="getProduct('1003')">
+        <area shape="rect" coords="289,281,379,326" onclick="getProduct('1004')">
+        <area shape="rect" coords="393,281,488,326" onclick="getProduct('1005')">
+    </map>
+
+    <map name="freshmap">
+        <area shape="rect" coords="10,146,80,194" onclick="getProduct('3002')">
+        <area shape="rect" coords="42,281,133,325" onclick="getProduct('3000')">
+        <area shape="rect" coords="146,281,238,325" onclick="getProduct('3001')">
+        <area shape="rect" coords="163,146,233,191" onclick="getProduct('3003')">
+        <area shape="rect" coords="243,147,314,193" onclick="getProduct('3004')">
+        <area shape="rect" coords="320,146,391,192" onclick="getProduct('3006')">
+        <area shape="rect" coords="401,146,471,190" onclick="getProduct('3007')">
+        <area shape="rect" coords="477,146,547,190" onclick="getProduct('3005')">
+    </map>
+
+    <map name="bevmap">
+        <area shape="rect" coords="25,277,95,321" onclick="getProduct('4003')">
+        <area shape="rect" coords="104,278,174,320" onclick="getProduct('4004')">
+        <area shape="rect" coords="183,276,255,321" onclick="getProduct('4000')">
+        <area shape="rect" coords="261,277,331,320" onclick="getProduct('4001')">
+        <area shape="rect" coords="340,277,413,321" onclick="getProduct('4002')">
+        <area shape="rect" coords="445,156,536,200" onclick="getProduct('4005')">
+    </map>
+
+    <map name="homemap">
+        <area shape="rect" coords="12,149,103,193" onclick="getProduct('2002')">
+        <area shape="rect" coords="75,282,167,330" onclick="getProduct('2000')">
+        <area shape="rect" coords="180,283,272,329" onclick="getProduct('2001')">
+        <area shape="rect" coords="226,148,317,194" onclick="getProduct('2005')">
+        <area shape="rect" coords="291,281,384,327" onclick="getProduct('2003')">
+        <area shape="rect" coords="398,281,488,326" onclick="getProduct('2004')">
+        <area shape="rect" coords="442,148,532,194" onclick="getProduct('2006')">
+    </map>
+
+    <map name="petmap">
+        <area shape="rect" coords="120,147,212,191" onclick="getProduct('5002')">
+        <area shape="rect" coords="228,147,319,192" onclick="getProduct('5003')">
+        <area shape="rect" coords="293,281,385,325" onclick="getProduct('5000')">
+        <area shape="rect" coords="399,280,489,326" onclick="getProduct('5001')">
+        <area shape="rect" coords="442,149,534,193" onclick="getProduct('5004')">
+    </map>
+
+</body>
+</html>
+<script>
+    document.getElementById('frozenmapselect').onmouseover = function () {frozenFoodUnhide()};
+    document.getElementById('freshmapselect').onmouseover = function () {freshFoodUnhide()};
+    document.getElementById('bevmapselect').onmouseover = function () {bevUnhide()};
+    document.getElementById('homemapselect').onmouseover = function () {homeUnhide()};
+    document.getElementById('petmapselect').onmouseover = function () {petUnhide()};
+
+    function frozenFoodUnhide() {
+        document.getElementById('frozen').hidden = false;
+
+        document.getElementById('pet').hidden = true;
+        document.getElementById('home').hidden = true;
+        document.getElementById('bev').hidden = true;
+        document.getElementById('fresh').hidden = true;
+    }
+    function freshFoodUnhide() {
+        document.getElementById('fresh').hidden = false;
+
+        document.getElementById('pet').hidden = true;
+        document.getElementById('frozen').hidden = true;
+        document.getElementById('home').hidden = true;
+        document.getElementById('bev').hidden = true;
+    }
+    function bevUnhide() {
+        document.getElementById('bev').hidden = false;
+
+        document.getElementById('pet').hidden = true;
+        document.getElementById('frozen').hidden = true;
+        document.getElementById('home').hidden = true;
+        document.getElementById('fresh').hidden = true;
+    }
+    function homeUnhide() {
+        document.getElementById('home').hidden = false;
+
+        document.getElementById('pet').hidden = true;
+        document.getElementById('frozen').hidden = true;
+        document.getElementById('bev').hidden = true;
+        document.getElementById('fresh').hidden = true;
+    }
+    function petUnhide() {
+        document.getElementById('pet').hidden = false;
+
+        document.getElementById('frozen').hidden = true;
+        document.getElementById('home').hidden = true;
+        document.getElementById('bev').hidden = true;
+        document.getElementById('fresh').hidden = true;
+    }
+    
+    function getProduct(id) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("productdetails").innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open("GET", "productSearch.php?product_ID=" + id, true);
+        xmlhttp.send();
+    }
+</script>
+
